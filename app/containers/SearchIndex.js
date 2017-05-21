@@ -3,12 +3,12 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../redux-stuff/actions/products'
-import { Button, FormGroup, FormControl } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 class SearchIndex extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { searchParams: undefined }
+    this.state = { searchParams: {} }
   }
 
   handleClick() {

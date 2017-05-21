@@ -16,6 +16,7 @@ export default class ProductFilterBar extends React.Component {
       vendorFilterFlag: false,
       productTypeFilterFlag: false,
       tagFilterFlag: false,
+      filters: {},
     };
   }
 
@@ -83,6 +84,20 @@ export default class ProductFilterBar extends React.Component {
     }.bind(this), 500);
   }
 
+  onChangeVendorFilter(filteredVendors) {
+    const filters = Object.assign({}, this.state.filters, {vendor: filteredVendors.join('|')})
+    this.props.onChangeFilters(filters)
+  }
+
+  onChangeProductTypeFilter(filteredTypes) {
+    const filters = Object.assign({}, this.state.filters, {product_type: filteredTypes.join('|')})
+    this.props.onChangeFilters(filters)
+  }
+
+  onChangeProductTagFilter(filteredTags) {
+    const filters = Object.assign({}, this.state.filters, {tags: filteredTags.join('|')})
+    this.props.onChangeFilters(filters)
+  }
 
   render() {
     const { priceFilterFlag,  
@@ -122,7 +137,7 @@ export default class ProductFilterBar extends React.Component {
           </div>
           { vendorFilterFlag
            ?
-            <ProductVendorFilter searchItems={ vendors } hideFilterPan={ (e) => this.onHideVendorFilterPan(e) }/>
+            <ProductVendorFilter searchItems={vendors} onChangeVendorFilter={ (filteredVendors) => this.onChangeVendorFilter(filteredVendors) } />
           : null
           }
         </div>
@@ -134,7 +149,7 @@ export default class ProductFilterBar extends React.Component {
           </div>
           { productTypeFilterFlag
            ?
-            <ProductTypeFilter searchItems={ productTypes } hideFilterPan={ (e) => this.onHideProductTypeFilterPan(e) }/>
+            <ProductTypeFilter searchItems={productTypes} onChangeProductTypeFilter={ (filteredTypes) => this.onChangeProductTypeFilter(filteredTypes) }/>
           : null
           }
         </div>
@@ -146,7 +161,7 @@ export default class ProductFilterBar extends React.Component {
           </div>
           { tagFilterFlag
            ?
-            <ProductTagFilter searchItems={ productTags } hideFilterPan={ (e) => this.onHideTagFilterPan(e) }/>
+            <ProductTagFilter searchItems={productTags} onChangeProductTagFilter={ (filteredTags) => this.onChangeProductTagFilter(filteredTags) }/>
           : null
           }
         </div>

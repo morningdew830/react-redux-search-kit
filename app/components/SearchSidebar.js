@@ -39,10 +39,9 @@ export default class SearchSidebar extends React.Component {
     this.props.onChangeFilters(filters)
   }
 
-  onHideTagFilterPan(e) {
-    setTimeout(function() {
-        this.setState({ tagFilterFlag : false });
-    }.bind(this), 500);
+  onChangeProductTagFilter(filteredTags) {
+    const filters = Object.assign({}, this.state.filters, {tags: filteredTags.join('|')})
+    this.props.onChangeFilters(filters)
   }
 
   render() {
@@ -51,7 +50,15 @@ export default class SearchSidebar extends React.Component {
             openProductTypeFlag,
             openTagFlag } = this.state;
 
-    const { vendors, productTypes, productTags } = this.props
+    let vendors = null, productTypes = null, productTags = null
+    if (this.props) {
+      vendors = this.props.vendors
+      productTypes = this.props.productTypes
+      productTags = this.props.productTags
+    }
+    vendors = vendors ? Object.keys(vendors).map(key => vendors[key]) : []
+    productTypes = productTypes ? Object.keys(productTypes).map(key => productTypes[key]) : []
+    productTags = productTags ? Object.keys(productTags).map(key => productTags[key]) : []
 
     return (
       <div>
@@ -62,7 +69,7 @@ export default class SearchSidebar extends React.Component {
           { openPriceFlag
             ? 
             <div className="price-filter-wrapper">
-              <ProductPriceFilter hideFilterPan={ (e) => this.onHidePriceFilterPan(e) }/>
+              {/*<ProductPriceFilter hideFilterPan={ (e) => this.onHidePriceFilterPan(e) }/>*/}
             </div>
             :null
           }
@@ -98,7 +105,7 @@ export default class SearchSidebar extends React.Component {
           { openTagFlag
             ? 
             <div>
-              <ProductTagFilter searchItems={productTags} hideFilterPan={ (e) => this.onHideTagFilterPan(e) }/>
+              <ProductTagFilter searchItems={productTags} onChangeProductTagFilter={ (filteredTags) => this.onChangeProductTagFilter(filteredTags) }/>
             </div>
             :null
           }

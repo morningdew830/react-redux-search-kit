@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Row, Col, FormGroup, FormControl } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import '../style/styles.css';
 
 export default class ProductListItem extends React.Component {

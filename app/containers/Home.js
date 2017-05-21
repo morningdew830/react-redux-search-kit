@@ -22,8 +22,8 @@ class HomeComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-   const { searchParams, products } = nextProps.products
-   this.setState({ searchParams, products })
+    const { products, searchParams } = nextProps.products
+    this.setState( { products, searchParams } )
   }
 
   onChangeKey(key) {
@@ -33,13 +33,19 @@ class HomeComponent extends React.Component {
   }
 
   onChangeFilters(filters) {
-    const searchParams = Object.assign({}, this.state.searchParams, filters)
-    console.log("onChangeFilters: ", filters)
+    let allParams = Object.assign({}, this.state.searchParams, filters)
+    let searchParams = {}
+    Object.keys(allParams).map(key => {
+      if (allParams[key] !== '' && allParams[key] !== 0) {
+        searchParams[key] = allParams[key]
+      }
+    })
     this.props.dispatch(fetchProducts(searchParams))
     this.setState({searchParams})
   }
 
   render() {
+    console.log("Render: ++++++++++++++++++++", this.state)
     const { searchParams, products } = this.state
     let searchResultText = "Searching ... "
     if (products) {
@@ -50,9 +56,9 @@ class HomeComponent extends React.Component {
         <div className="container">
           <TitleBarComponent/>
           <ProductControlBarComponent/>
-          <SearchResultBar searchKey={ searchParams ? searchParams.q : '' } searchResultText={ searchResultText } onChangeKey={this.onChangeKey}/>
-          <ProductFilterBar products={ products } />
-          <ProductSearchLayout products={ products } onChangeFilters={ (filters) => this.onChangeFilters(filters) } />
+          <SearchResultBar searchKey={ searchParams ? searchParams.q : '' } searchResultText={ searchResultText } onChangeKey={ (key) => this.onChangeKey(key) } />
+          <ProductFilterBar products={ products } onChangeFilters={ (filters) => this.onChangeFilters(filters) } />
+          <ProductSearchLayout products={ products } onChangeFilters={ (filters) => this.onChangeFilters(filters)} activePage={searchParams ? +searchParams.page : 1} />
         </div>
       </div>
     )
