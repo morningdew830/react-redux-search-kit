@@ -1,0 +1,423 @@
+/* Style Component*/
+.change-font-color-to-green {
+  color:green!important;
+}
+
+.change-font-color-to-red {
+  color:red!important;
+}
+
+.container-about h1 {
+  width:50%;
+  margin: 100px auto;
+  color: #0000ff;
+}
+.searchResultTitle {
+    color: #3d4246;
+    font-size: 2.1875em;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 40px 0 55px 0;
+}
+
+.searchResultContent {
+    float: left;
+    width: 100%;
+    padding: 20px 0 80px;
+    background-color: #f7f7f7;
+}
+
+.searchResultContent .product-control-bar {
+    border: 1px solid #d2d2d2;
+    padding: 3px 15px;
+}
+
+.product-control-bar {
+    margin-left: -1px;
+    min-height: 40px;
+    width: 100%;
+}
+
+.product-control-bar .controlsPanelPrd {
+    margin-left: 0;
+    margin-top: 6px;
+    vertical-align: middle;
+}
+
+.product-control-bar a, .product-control-bar a.active, .product-control-bar a:hover {
+    border: 0 none;
+    color: #333;
+    display: block;
+    font-size: 15px;
+    line-height: 28px;
+    margin-right: 2px;
+    opacity: 1;
+    padding: 0 15px;
+    text-decoration: none;
+}
+
+.product-control-bar .viewModePanel {
+    margin: 10px 0 5px 30px;
+}
+
+.product-control-bar .viewModePanel a.grid-mode-icon {
+    /*background-image: url('/app/assets/images/grid-icon.png');*/
+    background-color: #00ff00;
+}
+
+.product-control-bar .viewModePanel a.list-mode-icon {
+    /*background-image: url('/app/assets/images/list-icon.png');*/
+    background-color: #ff00ff;
+}
+
+.product-control-bar .viewModePanel a:hover, .product-control-bar .viewModePanel a.active {
+    opacity: 1;
+}
+
+.product-control-bar .viewModePanel a {
+    background-repeat: no-repeat;
+    height: 21px;
+    width: 21px;
+    margin-left: 4px;
+    float: left;
+    opacity: 0.5;
+}
+
+.controllbar-search {
+    width: 20%;
+    float: right;
+}
+
+.controllbar-search select{
+    width: 12%;
+    position: absolute;
+    margin-left: 70px;
+    margin-top: 4px;
+
+}
+
+.searchResultBar {
+    margin: 15px 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+.searchResultBar input {
+    width: 80%;
+    float: right;    
+}
+
+.productFiltersBar .filtersByAll {
+    float: left;
+    margin-right: 7px;
+    position: relative;
+}
+
+.productFiltersBar .filtersByAll.open .filtersDropdown {
+    background-color: #f7f7f7;
+}
+
+.searchResultContent .productFiltersBar .filtersByAll .filtersDropdown {
+    border: 1px solid #d2d2d2;
+    padding: 5px 15px;
+}
+
+.productFiltersBar .filtersByAll .filtersDropdown {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #333;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0 15px;
+    position: relative;
+}
+
+i.countBox {
+    font-style: normal;
+}
+
+.dropdown-checkbox.dropdown.open .caret {
+    border-top-color: black !important;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.filtersByAll.myDropdownCheckboxBasic.dropdown-checkbox .dropdown-checkbox-content {
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    min-width: 242px;
+    padding: 10px 0;
+    position: absolute;
+    z-index: 999;
+    border-radius: 2px;
+}
+
+.filtersByAll.myDropdownCheckboxBasic.dropdown-checkbox .dropdown-checkbox-menu {
+    margin: 0;
+    padding: 0;
+}
+
+.filtersByAll.myDropdownCheckboxBasic.dropdown-checkbox .dropdown-checkbox-menu li {
+    color: #666;
+    font-size: 13px;
+    line-height: 21px;
+    margin: 10px 0;
+    padding: 0;
+    cursor: pointer;
+    list-style: none;
+}
+
+.dropdown-checkbox .dropdown-checkbox-content li .layout {
+    padding: 0px 10px;
+}
+
+.dropdown-checkbox .dropdown-checkbox-content li .layout .checkbox{
+    margin-left: 20px;
+}
+
+.filtersByAll.myDropdownCheckboxBasic.dropdown-checkbox .dropdown-checkbox-menu li .layout label {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    margin: 0;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    padding: 0 0 0 6px;
+    vertical-align: top;
+    font-weight: normal;
+}
+.range-slider-bar{
+    width: 90%;
+    margin: 0 auto!important;
+}
+.range-slider-bar .InputRange-label--max,
+.range-slider-bar .InputRange-label--min
+{
+    font-size: 15px!important;
+}
+
+.price-range-bar {
+    height: 80px;
+}
+.price-range-bar ul {
+    margin-top: 35px!important;
+}
+.range-slider-bar .InputRange-label--value {
+    top: -32px;
+    font-size: 14px;
+}
+
+.product-list-pane {
+    margin-top:50px;
+    padding-right: 0px;
+    padding-left: 15px;
+}
+
+
+.sidebar-prodcuct {
+    padding: 0px;
+}
+
+.sidebar-price-filter{
+    border-top: 1px solid #eeeeee;
+    border: 1px solid #d2d2d2;
+    background: #fff;
+    border-bottom: none;
+    padding: 0px 20px
+}
+
+.productFilterTitle {
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.sidebar-price-filter ul {
+    padding: 0px;
+}
+
+.product-vendor-filter,
+.product-type-filter{
+    border: 1px solid #d2d2d2;
+    background: #fff;
+    border-bottom: none;
+    padding: 0px 20px;
+    overflow: scroll;
+}
+.product-tag-filter{
+    border: 1px solid #d2d2d2;
+    background: #fff;
+    padding: 0px 20px;
+    overflow: scroll;
+}
+
+.sidebar-prodcuct li {
+    list-style: none;
+}
+
+.product-vendor-filter ul, 
+.product-type-filter ul,
+.product-tag-filter ul {
+    padding:0px;
+}
+.price-filter-wrapper .dropdown-checkbox-content {
+    height: 60px!important;
+} 
+.sidebar-prodcuct .dropdown-checkbox-content {
+     height: 130px;
+}
+
+.searchResultsContent {
+    padding-left: 0;
+    padding-right: 5px;
+}
+
+.searchResultsContent .product {
+    list-style: none;
+    box-sizing: border-box;
+    color: #535353;
+    cursor: pointer;
+    line-height: 16px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.searchResultsContent .product .viewLink {
+    text-decoration: none;
+    border: 1px solid #eee;
+    float: left;
+    transition: border-color 0.09s ease-in 0s;
+    background-color: #fff;
+}
+
+.searchResultsContent .thumbnailImage {
+    display: block;
+    height: 140px;
+    margin: 20px auto 10px;
+    position: relative;
+    text-align: center;
+    width: 140px;
+}
+
+.searchResultsContent .thumbnailImage img{
+    height: 140px;
+    width: 140px;
+}
+
+.searchResultsContent .overhiddenText {
+    display: block;
+    overflow: hidden;
+}
+
+.searchResultsContent .overhiddenText .title {
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    font-size: 15px;
+    height: 2.8em;
+    line-height: 1.4em;
+    margin: 10px 10px 9px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #0288d1;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.searchResultsContent .overhiddenText .description {
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    font-size: 13px;
+    height: 2.8em;
+    line-height: 1.4;
+    margin: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #747474;
+    font-weight: normal;
+}
+
+.searchResultsContent .overhiddenText .price {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 18px;
+    margin: 10px;
+    color: #014e70;
+    font-weight: bold;
+}
+
+.searchPageContent {
+    padding: 250px 55px;
+}
+
+.searchTitle {
+    color: #3d4246;
+    font-family: "Work Sans","HelveticaNeue","Helvetica Neue",sans-serif;
+    font-size: 1.25em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0 0 17.5px;
+    overflow-wrap: break-word;
+}
+
+.searchForm .searchBtn {
+    background-color: #7796a8;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Work Sans","HelveticaNeue","Helvetica Neue",sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: normal;
+    width: auto;
+    height: 46px;
+}
+
+.searchForm .input-group input {
+    background-color: #fff;
+    border: 1px solid #e8e9eb;
+    border-radius: 2px;
+    color: #000;
+    font-family: "Work Sans","HelveticaNeue","Helvetica Neue",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    max-width: 100%;
+    width: 100%;
+    padding: 12px 20px;
+    height: 46px;
+}
+
+.searchForm {
+    width: 35%;
+    margin: 0 auto;
+}
