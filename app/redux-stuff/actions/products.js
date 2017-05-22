@@ -1,11 +1,15 @@
 import axios from 'axios';
 export const REQUEST_GET_URL = 'https://search.testapp123.com/search-result';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
-
+export const SET_LAYOUT = 'SET_LAYOUT';
 export const reponseGetProduct = (searchParams, products) => ({
   type: GET_PRODUCTS,
   products: products,
-  searchParams: searchParams
+  searchParams: searchParams,
+})
+export const setLayout = (layout) => ({
+  type: SET_LAYOUT,
+  layout: layout,
 })
 
 export const fetchProducts = searchParams => dispatch => {

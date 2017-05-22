@@ -9,31 +9,38 @@ export default class ProductPriceFilter extends React.Component {
   constructor(props){
     super(props);
       this.state = {
-        values:{
-          min:100, 
-          max:700,
+        priceRange: {
+          max: 0,
+          min: 0
+        }
       }
-    }
   }
 
-  // handleUpdateValue(value) {
-  //   this.setState({
-  //     values:value,
-  //   });
-  // }
-  onHideFilterPan(e) {
-    this.props.hideFilterPan(e)
+  onChange(component, priceRange) {
+    this.setState({
+      priceRange: priceRange,
+    })
   }
+
+  onChangeComplete(component, priceRange) {
+    this.props.onChangePriceRange(`${priceRange.min},${priceRange.max}`)
+  }
+
   render() {
+    let values = this.state.priceRange
+    if (this.state.priceRange.max === 0) {
+      values.max = this.props.priceRangeMinMax ? this.props.priceRangeMinMax.max_range : 0
+    }
     return (
       <div className="dropdown-checkbox-content price-range-bar">
         <ul className="dropdown-checkbox-menu productTypeFilterList productTypeFilterTopBar">
           <li className="range-slider-bar">
             <InputRange
-              maxValue={1000}
-              minValue={0}
-              value={this.state.values}
-              onChange={ (e) => this.onHideFilterPan(e) }
+              maxValue={this.props.priceRangeMinMax ? this.props.priceRangeMinMax.max_range : 1000}
+              minValue={this.props.priceRangeMinMax ? this.props.priceRangeMinMax.min_range : 0}
+              value={values}
+              onChange={ this.onChange.bind(this) }
+              onChangeComplete={ this.onChangeComplete.bind(this) }
             />
           </li>
         </ul>

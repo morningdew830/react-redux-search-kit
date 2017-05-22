@@ -23,34 +23,27 @@ export default class ProductSearchLayout extends React.Component {
   }
 
   render() {
-    const { products, activePage } = this.props
-    let vendors = null, productTypes = null, productTags = null, totalCount = 0
+    const { products, priceRange, activePage } = this.props
+    let totalCount = 0
     if (products) {
-      vendors = products.vendors
-      productTypes = products.productTypes
-      productTags = products.productTags
       if (products.products) {
         totalCount = this.getNumberOfPages(products.search_found_text)
       }
     }
-    vendors = vendors ? Object.keys(vendors).map(key => vendors[key]) : []
-    productTypes = productTypes ? Object.keys(productTypes).map(key => productTypes[key]) : []
-    productTags = productTags ? Object.keys(productTags).map(key => productTags[key]) : []
-    
+
     return (
       <Col xs={12} md={12} className="product-list-pane">
         <Col xs={3} md={3} className="sidebar-prodcuct">
           <SearchSidebar
-              vendors={ vendors } 
-              productTypes={ productTypes } 
-              productTags={ productTags } 
+              products={ products }
+              priceRange={ priceRange }
               onChangeFilters={ (filters) => this.onChangeFilters(filters) }/>
         </Col>
         <Col xs={9} md={9} >
           <ProductListLayout 
               totalCount={ totalCount }
               products={ products ? products.products : null } 
-              activePage={ activePage }
+              activePage={ activePage || 1 }
               onChangePage={ (filters) => this.onChangePage(filters) } />
         </Col>
       </Col>

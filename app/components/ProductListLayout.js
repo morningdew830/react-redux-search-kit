@@ -1,20 +1,18 @@
 
 import React from 'react'
+import { connect } from 'react-redux';
 import { Row, Col, Pagination } from 'react-bootstrap'
 import ProductListItem from './ProductListItem'
+import ProductGridItem from './ProductGridItem'
 import '../style/styles.css'
 const ITEMS_PER_PAGE = 9
 
-export default class ProductListLayout extends React.Component {
+class ProductListLayout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfPages: 0
+      numberOfPages: 0,
     }
-  }
-
-  componentWillReceiveProps(nextProps) {
-
   }
 
   onChangePage(selectedPage) {
@@ -22,16 +20,27 @@ export default class ProductListLayout extends React.Component {
   }
 
   render() {
-    const { totalCount, products, activePage } = this.props
+    const { totalCount, activePage } = this.props
+    let products = this.props.products
+    if (products && products.products && products.products.products) {
+      products = products.products.products
+    } else {
+      products = null
+    }
     const productListItems = products ? products.map((product, index) =>
       <ProductListItem product={product} key={index} />
     ) : [];
-    const numberOfPages = (totalCount % ITEMS_PER_PAGE) === 0 ? (totalCount / ITEMS_PER_PAGE) : (totalCount / ITEMS_PER_PAGE) + 1
+    const productGridItems = products ? products.map((product, index) =>
+      <ProductGridItem product={product} key={index} />
+    ) : [];
+    const numberOfPages = (totalCount % ITEMS_PER_PAGE) === 0 ? Math.floor(totalCount / ITEMS_PER_PAGE) : Math.floor(totalCount / ITEMS_PER_PAGE) + 1
+    let layoutClass = 'searchResultsContent '
+    layoutClass += this.props.products.layout === 'list' ? 'listview' : 'gridview'
 
     return (
-      <div className="searchResultsContent gridview">
+      <div className={layoutClass}>
         <div className="row">
-          {productListItems}
+          { this.props.products.layout === 'list' ? productListItems : productGridItems }
         </div>
         <div className="row">
           <Pagination
@@ -50,3 +59,9 @@ export default class ProductListLayout extends React.Component {
     );
   }
 }
+
+const layoutStateToProps = state => {
+  return Object.assign({}, state);
+}
+
+export default connect(layoutStateToProps)(ProductListLayout)

@@ -3,12 +3,12 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import '../style/styles.css';
 
-export default class ProductListItem extends React.Component {
+export default class ProductGridItem extends React.Component {
   
   render() {
     const { product } = this.props;  
     return (
-      <div className="product col-md-12 col-sm-12 col-xs-12">
+      <div className="product col-md-4 col-sm-6 col-xs-12">
         <a href={product.link} className="viewLink">
         <div className="item clearfix">
           <span className="thumbnailImage">

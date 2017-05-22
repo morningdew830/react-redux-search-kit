@@ -163,7 +163,7 @@ i.countBox {
     border: 1px solid #d3d3d3;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
     min-width: 242px;
-    padding: 10px 0;
+    padding: 10px;
     position: absolute;
     z-index: 999;
     border-radius: 2px;
@@ -215,7 +215,7 @@ i.countBox {
 }
 
 .price-range-bar {
-    height: 80px;
+    height: 100px;
 }
 .price-range-bar ul {
     margin-top: 35px!important;
@@ -310,6 +310,11 @@ i.countBox {
     background-color: #fff;
 }
 
+.searchResultsContent.listview .viewLink {
+    float: left;
+    width: 100%;
+}
+
 .searchResultsContent .thumbnailImage {
     display: block;
     height: 140px;
@@ -319,9 +324,23 @@ i.countBox {
     width: 140px;
 }
 
+.searchResultsContent.listview .thumbnailImage {
+    float: left;
+    width: 17%;
+    margin-right: 2%;
+    margin-top: 0;
+}
+
 .searchResultsContent .thumbnailImage img{
-    height: 140px;
-    width: 140px;
+    bottom: -100%;
+    display: block;
+    left: 0;
+    margin: auto !important;
+    max-height: 140px;
+    max-width: 140px;
+    position: absolute;
+    right: 0;
+    top: -100%;
 }
 
 .searchResultsContent .overhiddenText {
@@ -363,6 +382,10 @@ i.countBox {
     margin: 10px;
     color: #014e70;
     font-weight: bold;
+}
+
+.searchResultsContent .pagination {
+    padding: 0 10px !important;
 }
 
 .searchPageContent {
@@ -420,4 +443,13 @@ i.countBox {
 .searchForm {
     width: 35%;
     margin: 0 auto;
+}
+
+.range-slider-bar .InputRange .InputRange-slider {
+    height: 1.5rem;
+    border-radius: 0;
+}
+
+.range-slider-bar .InputRange .InputRange-label--min, .InputRange-label--max {
+    bottom: -2.5rem !important;
 }

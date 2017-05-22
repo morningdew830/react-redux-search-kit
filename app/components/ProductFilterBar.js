@@ -30,12 +30,6 @@ export default class ProductFilterBar extends React.Component {
     });
   }
 
-  onHidePriceFilterPan(e) {
-    setTimeout(function() {
-        this.setState({ priceFilterFlag : false });
-    }.bind(this), 500);
-  }
-
   onShowVendorFilterPan() {
     const {vendorFilterFlag} = this.state;
     this.setState({ 
@@ -84,6 +78,11 @@ export default class ProductFilterBar extends React.Component {
     }.bind(this), 500);
   }
 
+  onChangePriceRange(priceRange) {
+    const filters = Object.assign({}, this.state.filters, {pricerange: priceRange})
+    this.props.onChangeFilters(filters)
+  }
+
   onChangeVendorFilter(filteredVendors) {
     const filters = Object.assign({}, this.state.filters, {vendor: filteredVendors.join('|')})
     this.props.onChangeFilters(filters)
@@ -105,11 +104,20 @@ export default class ProductFilterBar extends React.Component {
             productTypeFilterFlag, 
             tagFilterFlag } = this.state;
 
-    let vendors = null, productTypes = null, productTags = null
-    if (this.props.products) {
-      vendors = this.props.products.vendors
-      productTypes = this.props.products.productTypes
-      productTags = this.props.products.productTags
+    const { products } = this.props
+    let vendors = null, productTypes = null, productTags = null, priceRangeMinMax = null, priceRange = null
+    if (products) {
+      vendors = products.vendors
+      productTypes = products.productTypes
+      productTags = products.productTags
+      priceRangeMinMax = products.priceRange
+    }
+    if (this.props.priceRange) {
+      const _range = this.props.priceRange.split(',')
+      priceRange = {
+        min: _range[0],
+        max: _range[1]
+      }
     }
     vendors = vendors ? Object.keys(vendors).map(key => vendors[key]) : []
     productTypes = productTypes ? Object.keys(productTypes).map(key => productTypes[key]) : []
@@ -125,7 +133,7 @@ export default class ProductFilterBar extends React.Component {
           </div>
           { priceFilterFlag
            ?
-            <ProductPriceFilter hideFilterPan={ (e) => this.onHidePriceFilterPan(e) }/>
+            <ProductPriceFilter priceRangeMinMax={priceRangeMinMax} priceRange={priceRange} onChangePriceRange={ (priceRange) => this.onChangePriceRange(priceRange) }/>
           : null
           }
         </div>

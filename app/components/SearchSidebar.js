@@ -15,18 +15,13 @@ export default class SearchSidebar extends React.Component {
         openVendorFlag: true,
         openProductTypeFlag:true,
         openTagFlag:true,
-        priceFilterFlag: false,
-        vendorFilterFlag: false,
-        productTypeFilterFlag: false,
-        tagFilterFlag: false,
         filters: {},
     }
   }
 
-  onHidePriceFilterPan(e) {
-    setTimeout(function() {
-        this.setState({ priceFilterFlag : false });
-    }.bind(this), 500);
+  onChangePriceRange(priceRange) {
+    const filters = Object.assign({}, this.state.filters, {pricerange: priceRange})
+    this.props.onChangeFilters(filters)
   }
 
   onChangeVendorFilter(filteredVendors) {
@@ -50,11 +45,20 @@ export default class SearchSidebar extends React.Component {
             openProductTypeFlag,
             openTagFlag } = this.state;
 
-    let vendors = null, productTypes = null, productTags = null
-    if (this.props) {
-      vendors = this.props.vendors
-      productTypes = this.props.productTypes
-      productTags = this.props.productTags
+    const { products } = this.props
+    let vendors = null, productTypes = null, productTags = null, priceRangeMinMax = null, priceRange = null
+    if (products) {
+      vendors = products.vendors
+      productTypes = products.productTypes
+      productTags = products.productTags
+      priceRangeMinMax = products.priceRange
+    }
+    if (this.props.priceRange) {
+      const _range = this.props.priceRange.split(',')
+      priceRange = {
+        min: _range[0],
+        max: _range[1]
+      }
     }
     vendors = vendors ? Object.keys(vendors).map(key => vendors[key]) : []
     productTypes = productTypes ? Object.keys(productTypes).map(key => productTypes[key]) : []
@@ -69,7 +73,7 @@ export default class SearchSidebar extends React.Component {
           { openPriceFlag
             ? 
             <div className="price-filter-wrapper">
-              {/*<ProductPriceFilter hideFilterPan={ (e) => this.onHidePriceFilterPan(e) }/>*/}
+              <ProductPriceFilter priceRangeMinMax={priceRangeMinMax} priceRange={priceRange} onChangePriceRange={ (e) => this.onChangePriceRange(e) }/>
             </div>
             :null
           }

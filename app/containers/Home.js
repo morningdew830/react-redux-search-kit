@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import TitleBarComponent from '../components/TitleBarComponent';
-import ProductControlBarComponent from '../components/ProductControlBarComponent';
+import ProductControlBar from '../components/ProductControlBar';
 import SearchResultBar from '../components/SearchResultBar';
 import ProductFilterBar from '../components/ProductFilterBar';
 import ProductSearchLayout from '../components/ProductSearchLayout';
@@ -27,7 +27,7 @@ class HomeComponent extends React.Component {
   }
 
   onChangeKey(key) {
-    const searchParams = Object.assign({}, this.state.searchParams, {q: key})
+    const searchParams = Object.assign({}, this.state.searchParams, {q: key, page: 1})
     this.props.dispatch(fetchProducts(searchParams))
     this.setState({searchParams})
   }
@@ -45,7 +45,6 @@ class HomeComponent extends React.Component {
   }
 
   render() {
-    console.log("Render: ++++++++++++++++++++", this.state)
     const { searchParams, products } = this.state
     let searchResultText = "Searching ... "
     if (products) {
@@ -55,10 +54,10 @@ class HomeComponent extends React.Component {
       <div className="searchResultContent">
         <div className="container">
           <TitleBarComponent/>
-          <ProductControlBarComponent/>
+          <ProductControlBar/>
           <SearchResultBar searchKey={ searchParams ? searchParams.q : '' } searchResultText={ searchResultText } onChangeKey={ (key) => this.onChangeKey(key) } />
-          <ProductFilterBar products={ products } onChangeFilters={ (filters) => this.onChangeFilters(filters) } />
-          <ProductSearchLayout products={ products } onChangeFilters={ (filters) => this.onChangeFilters(filters)} activePage={searchParams ? +searchParams.page : 1} />
+          <ProductFilterBar products={ products } priceRange={ searchParams ? searchParams.pricerange : '' } onChangeFilters={ (filters) => this.onChangeFilters(filters) } />
+          <ProductSearchLayout products={ products } priceRange={ searchParams ? searchParams.pricerange : '' } onChangeFilters={ (filters) => this.onChangeFilters(filters)} activePage={searchParams ? +searchParams.page : 1} />
         </div>
       </div>
     )
