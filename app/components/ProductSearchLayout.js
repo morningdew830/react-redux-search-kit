@@ -32,20 +32,24 @@ export default class ProductSearchLayout extends React.Component {
     }
 
     return (
-      <Col xs={12} md={12} className="product-list-pane">
-        <Col xs={3} md={3} className="sidebar-prodcuct">
-          <SearchSidebar
-              products={ products }
-              priceRange={ priceRange }
-              onChangeFilters={ (filters) => this.onChangeFilters(filters) }/>
-        </Col>
-        <Col xs={9} md={9} >
-          <ProductListLayout 
-              totalCount={ totalCount }
-              products={ products ? products.products : null } 
-              activePage={ activePage || 1 }
-              onChangePage={ (filters) => this.onChangePage(filters) } />
-        </Col>
+      <Col xs={12} sm={12} md={12} className="searchResultsMainWrap">
+        <div className="row">
+          <Col xs={12} sm={3} md={3} className="sidebar-prodcuct">
+            <SearchSidebar
+                products={ products }
+                priceRange={ priceRange }
+                onChangeFilters={ (filters) => this.onChangeFilters(filters) }/>
+          </Col>
+          <Col xs={12} sm={9} md={9}>
+            <div className="row product-list-margin-left">
+              <ProductListLayout 
+                  totalCount={ totalCount }
+                  products={ products ? products.products : null } 
+                  activePage={ activePage || 1 }
+                  onChangePage={ (filters) => this.onChangePage(filters) } />
+            </div>
+          </Col>
+        </div>
       </Col>
     );
   }

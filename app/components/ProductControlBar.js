@@ -15,6 +15,20 @@ class ProductControlBar extends React.Component {
     this.props.dispatch(setLayout(layout))
   }
 
+  onChangeSortOrder(e) {
+    console.log("onChangeSortOrder", e.target.value)
+    let filters = {
+      sort_by: '',
+      sort_order: '',
+    }
+    if (e.target.value !== '') {
+      const items = e.target.value.split('&')
+      filters.sort_by = items[0]
+      filters.sort_order = items[1]
+    }
+    this.props.onChangeFilters(filters)
+  }
+
   render() {
     return (
       <Col xs={12} md={12} className="product-control-bar osearch-result-controlbar">
@@ -27,12 +41,12 @@ class ProductControlBar extends React.Component {
          <a href="#" className="list-mode-icon" onClick={() => this.onChangeLayout('list')}></a>
        </div>
        <FormGroup controlId="formControlsSelect" className="controllbar-search" bsSize="sm">
-        <FormControl componentClass="select" placeholder="select" bsSize="sm">
-          <option value="select">Relevance</option>
-          <option value="select">Title: A-Z</option>
-          <option value="select">Title: Z-A</option>
-          <option value="select">Price High-Low</option>
-          <option value="other">Price Low-High</option>
+        <FormControl componentClass="select" placeholder="select" bsSize="sm" onChange={(e) => this.onChangeSortOrder(e)}>
+          <option value="">Relevance</option>
+          <option value="title&asc">Title: A-Z</option>
+          <option value="title&desc">Title: Z-A</option>
+          <option value="prices&asc">Price Low-High</option>
+          <option value="prices&desc">Price High-Low</option>
         </FormControl>
        </FormGroup>
       </Col>

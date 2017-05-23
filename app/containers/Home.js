@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import TitleBarComponent from '../components/TitleBarComponent';
 import ProductControlBar from '../components/ProductControlBar';
 import SearchResultBar from '../components/SearchResultBar';
 import ProductFilterBar from '../components/ProductFilterBar';
@@ -53,11 +52,13 @@ class HomeComponent extends React.Component {
     return (
       <div className="searchResultContent">
         <div className="container">
-          <TitleBarComponent/>
-          <ProductControlBar/>
-          <SearchResultBar searchKey={ searchParams ? searchParams.q : '' } searchResultText={ searchResultText } onChangeKey={ (key) => this.onChangeKey(key) } />
-          <ProductFilterBar products={ products } priceRange={ searchParams ? searchParams.pricerange : '' } onChangeFilters={ (filters) => this.onChangeFilters(filters) } />
-          <ProductSearchLayout products={ products } priceRange={ searchParams ? searchParams.pricerange : '' } onChangeFilters={ (filters) => this.onChangeFilters(filters)} activePage={searchParams ? +searchParams.page : 1} />
+          <div className="row" id="searchResultWrap">
+            <h1 className="searchResultTitle text-center">Search Results</h1>
+            <ProductControlBar onChangeFilters={ (filters) => this.onChangeFilters(filters) }/>
+            <SearchResultBar searchKey={ searchParams ? searchParams.q : '' } searchResultText={ searchResultText } onChangeKey={ (key) => this.onChangeKey(key) } />
+            <ProductFilterBar products={ products } priceRange={ searchParams ? searchParams.pricerange : '' } onChangeFilters={ (filters) => this.onChangeFilters(filters) } />
+            <ProductSearchLayout products={ products } priceRange={ searchParams ? searchParams.pricerange : '' } onChangeFilters={ (filters) => this.onChangeFilters(filters)} activePage={searchParams ? +searchParams.page : 1} />
+          </div>
         </div>
       </div>
     )
